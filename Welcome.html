@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      #description {
+        margin-left: 400px;
+        margin-top: 30px;
+      }
+    </style>
+    <title>My server</title>
+  </head>
+  <body>
+    <h2>Welcome Reader!!!</h2>
+
+    <div id="description"></div>
+    <div>
+      <h3>Anime</h3>
+      <ul>
+        <li onclick="getDescription('One piece')" id="One piece">One piece</li>
+        <li onclick="getDescription('JJK')" id="JJK">Jujutsu Kaisen</li>
+        <li onclick="getDescription('Bleach')" id="Bleach">Bleach</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Thriller</h3>
+      <ul>
+        <li onclick="getDescription('sherlock')" id="sherlock">
+          Sherlock holmes
+        </li>
+        <li onclick="getDescription('Crime')" id="Crime">
+          Crime and Punishment
+        </li>
+        <li onclick="getDescription('400 days')" id="400 days">400 days</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Self-help</h3>
+      <ul>
+        <li onclick="getDescription('Meditations')" id="Meditations">
+          Meditations
+        </li>
+        <li onclick="getDescription('Atomic Habbits')" id="Atomic Habbits">
+          Atomic Habbits
+        </li>
+        <li onclick="getDescription('Power')" id="Power">48 Laws of Power</li>
+      </ul>
+    </div>
+    <script>
+      function getDescription(book) {
+        document.getElementById(book).style.color = 'green'
+        fetch('/description?book=' + encodeURIComponent(book))
+          .then((response) => response.text())
+          .then((data) => {
+            document.getElementById('description').innerText = data
+          })
+          .catch((error) => {
+            console.error('Error:', error)
+          })
+      }
+    </script>
+  </body>
+</html>

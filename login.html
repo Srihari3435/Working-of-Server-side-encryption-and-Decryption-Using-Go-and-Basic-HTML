@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book server</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .background {
+        background-color: rgb(18, 2, 78);
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+      }
+      .container {
+        position: relative;
+        top: 300px;
+      }
+      .login-container {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        width: 300px;
+      }
+      form {
+        text-align: center;
+      }
+      input,
+      button {
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+      }
+      button {
+        background-color: #007bff;
+        color: #ffffff;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      #username {
+        padding: 4px;
+        padding-left: 2px;
+      }
+      #password {
+        padding: 4px;
+        padding-left: 2px;
+      }
+      h1 {
+        padding: 4px;
+        padding-left: 2px;
+      }
+      #sub {
+        padding: 10px;
+        padding-left: 10px;
+      }
+      img:hover {
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="background"></div>
+
+      <div class="login-container">
+        <form id="login-form" action="/loginauth" method="post">
+          <h1>Login</h1>
+          <div class="input-container">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required />
+          </div>
+          <br />
+          <div class="input-container">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required />
+          </div>
+          <br />
+          <button type="submit" id="sub">Login</button>
+        </form>
+      </div>
+    </div>
+    {{if .}} {{.}} {{end}}
+  </body>
+</html>
